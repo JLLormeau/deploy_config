@@ -20,7 +20,7 @@ In this lab you will import all json configurations with [monaco v2](https://www
 ## Step 3 : my first deployment with monaco v2 
 use this script to configure the variables on linux environment   
 
-    cd;cd dynatrace-lab
+    cd;cd deploy_config
     bash deploy_config.sh
 
 ![image](https://user-images.githubusercontent.com/40337213/234709653-0d377eea-7bf7-4bac-b49c-bf5b19414a89.png)
