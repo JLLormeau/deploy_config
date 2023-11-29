@@ -11,7 +11,7 @@ configs:
     parameters:
       lowername:
         name: mz
-        type: environmentt
+        type: environment
   type:
     settings:
       schema: builtin:management-zones
