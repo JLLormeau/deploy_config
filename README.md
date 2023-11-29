@@ -12,7 +12,7 @@ In this lab you will import all json configurations with [monaco v2](https://www
 
 ## Step 2 : install monaco V2
 
-    cd;cd dynatrace-lab/
+    cd;cd deploy_config/
     curl -L https://github.com/Dynatrace/dynatrace-configuration-as-code/releases/latest/download/monaco-linux-amd64 -o monaco
     chmod +x monaco
     echo "monaco v2 is installed on your host"
