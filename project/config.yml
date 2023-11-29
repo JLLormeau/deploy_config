@@ -16,7 +16,7 @@ configs:
     settings:
       schema: builtin:management-zones
       scope: environment
-## auto tag "bu" use metadata bu
+## auto tag "ROBIN" extract from namespace
 - id: tag-robin
   config:
     name: ROBIN
