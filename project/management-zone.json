@@ -1,0 +1,108 @@
+{
+  "name": "{{ .name }}",
+  "rules": [
+    {
+      "enabled": true,
+      "type": "SELECTOR",
+      "entitySelector": "type(\"host\"),tag(ROBIN:{{ .lowername }})"
+    },
+    {
+      "enabled": true,
+      "type": "SELECTOR",
+      "entitySelector": "type(SERVICE),toRelationships.calls(type(SERVICE),tag(ROBIN:{{ .lowername }}))"
+    },
+    {
+      "enabled": true,
+      "type": "ME",
+      "attributeRule": {
+        "entityType": "CLOUD_APPLICATION",
+        "conditions": [
+          {
+            "key": "CLOUD_APPLICATION_NAMESPACE_LABELS",
+            "dynamicKey": "e-i.com/robin",
+            "operator": "EQUALS",
+            "stringValue": "{{ .name }}",
+            "caseSensitive": false
+          }
+        ]
+      }
+    },
+    {
+      "enabled": true,
+      "type": "ME",
+      "attributeRule": {
+        "entityType": "CLOUD_APPLICATION_NAMESPACE",
+        "conditions": [
+          {
+            "key": "CLOUD_APPLICATION_NAMESPACE_NAME",
+            "operator": "BEGINS_WITH",
+            "stringValue": "r-{{ .name }}",
+            "caseSensitive": false
+          }
+        ]
+      }
+    },
+    {
+      "enabled": true,
+      "type": "ME",
+      "attributeRule": {
+        "entityType": "HTTP_MONITOR",
+        "conditions": [
+          {
+            "key": "HTTP_MONITOR_NAME",
+            "operator": "BEGINS_WITH",
+            "stringValue": "{{ .name }}",
+            "caseSensitive": false
+              }
+        ]
+      }
+    },
+    {
+      "enabled": true,
+      "type": "ME",
+      "attributeRule": {
+        "entityType": "WEB_APPLICATION",
+        "conditions": [
+          {
+            "key": "WEB_APPLICATION_NAME",
+            "operator": "EQUALS",
+            "stringValue": "ROBIN",
+            "caseSensitive": false
+          }
+        ]
+      }
+    },
+    {
+      "enabled": true,
+      "type": "ME",
+      "attributeRule": {
+        "entityType": "SERVICE",
+        "conditions": [
+          {
+            "key": "SERVICE_TAGS",
+            "operator": "EQUALS",
+            "tag": "ROBIN:{{ .lowername }}"
+          }
+        ],
+        "serviceToHostPropagation": true,
+        "serviceToPGPropagation": true
+      }
+    },
+    {
+      "enabled": true,
+      "type": "ME",
+      "attributeRule": {
+        "entityType": "PROCESS_GROUP",
+        "conditions": [
+          {
+            "key": "PROCESS_GROUP_TAGS",
+            "operator": "EQUALS",
+            "tag": "ROBIN:{{ .lowername }}"
+          }
+        ],
+        "pgToHostPropagation": true,
+        "pgToServicePropagation": true
+      }
+    }
+  ]
+}

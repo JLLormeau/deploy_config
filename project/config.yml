@@ -1,0 +1,28 @@
+## This config.yml is an example, modify only config.yml.ref - which is used as reference. 
+configs:
+## management zone
+- id: config-id
+  config:
+    name:
+      name: MZ
+      type: environment
+    template: management-zone.json
+    skip: false
+    parameters:
+      lowername:
+        name: mz
+        type: environmentt
+  type:
+    settings:
+      schema: builtin:management-zones
+      scope: environment
+## auto tag "bu" use metadata bu
+- id: tag-robin
+  config:
+    name: ROBIN
+    template: auto-tag-robin.json
+    skip: true
+  type:
+    settings:
+      schema: builtin:tags.auto-tagging
+      scope: environment
