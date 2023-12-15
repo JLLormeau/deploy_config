@@ -4,12 +4,12 @@
     {
       "enabled": true,
       "type": "SELECTOR",
-      "entitySelector": "type(\"host\"),tag(ROBIN:{{ .lowername }})"
+      "entitySelector": "type(\"host\"),tag(CLIENT:{{ .lowername }})"
     },
     {
       "enabled": true,
       "type": "SELECTOR",
-      "entitySelector": "type(SERVICE),toRelationships.calls(type(SERVICE),tag(ROBIN:{{ .lowername }}))"
+      "entitySelector": "type(SERVICE),toRelationships.calls(type(SERVICE),tag(CLIENT:{{ .lowername }}))"
     },
     {
       "enabled": true,
@@ -19,7 +19,7 @@
         "conditions": [
           {
             "key": "CLOUD_APPLICATION_NAMESPACE_LABELS",
-            "dynamicKey": "e-i.com/robin",
+            "dynamicKey": "e-i.com/client",
             "operator": "EQUALS",
             "stringValue": "{{ .name }}",
             "caseSensitive": false
@@ -66,7 +66,7 @@
           {
             "key": "WEB_APPLICATION_NAME",
             "operator": "EQUALS",
-            "stringValue": "ROBIN",
+            "stringValue": "CLIENT",
             "caseSensitive": false
           }
         ]
@@ -81,7 +81,7 @@
           {
             "key": "SERVICE_TAGS",
             "operator": "EQUALS",
-            "tag": "ROBIN:{{ .lowername }}"
+            "tag": "CLIENT:{{ .lowername }}"
           }
         ],
         "serviceToHostPropagation": true,
@@ -97,7 +97,7 @@
           {
             "key": "PROCESS_GROUP_TAGS",
             "operator": "EQUALS",
-            "tag": "ROBIN:{{ .lowername }}"
+            "tag": "CLIENT:{{ .lowername }}"
           }
         ],
         "pgToHostPropagation": true,

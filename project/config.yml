@@ -16,11 +16,11 @@ configs:
     settings:
       schema: builtin:management-zones
       scope: environment
-## auto tag "ROBIN" extract from namespace
-- id: tag-robin
+## auto tag "CLIENT" extract from namespace
+- id: tag-client
   config:
-    name: ROBIN
-    template: auto-tag-robin.json
+    name: CLIENT
+    template: auto-tag.json
     skip: true
   type:
     settings:
