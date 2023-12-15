@@ -7,7 +7,6 @@ In this lab you will import all json configurations with [monaco v2](https://www
 
     cd
     git clone https://github.com/JLLormeau/deploy_config
-    echo "the lab is copy here "`pwd`"/dynatrace-lab"
     
 
 ## Step 2 : install monaco V2
