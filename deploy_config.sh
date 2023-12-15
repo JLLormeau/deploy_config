@@ -7,8 +7,8 @@ if [[ ! -f project/config.yml.ref ]]; then
   mv delete.yaml delete.yaml.ref
 fi
     
-sed "s/config-id/$Robin/g" project/config.yml.ref > project/config.yml
-sed "s/config-id/$Robin/g" delete.yaml.ref > delete.yaml
+sed "s/config-id/$Client/g" project/config.yml.ref > project/config.yml
+sed "s/config-id/$Client/g" delete.yaml.ref > delete.yaml
 
 while [ "$APPLY" !=  "Y" ]
 do
@@ -18,7 +18,7 @@ do
         echo "Set variables"
         echo "0) export DT_TENANT_URL="$DT_TENANT_URL
         echo "1) export DT_API_TOKEN="${DT_API_TOKEN:0:32}"*****"
-        echo "2) export ROBIN="$Robin
+        echo "2) export Client="$Client
         echo " #####################"
         echo "Run monaco"
         echo "A) Backup json config> ./monaco download manifest -e MyEnv"
@@ -39,11 +39,11 @@ do
                      sed -i s/DT_API_TOKEN=.*$/DT_API_TOKEN=\"$value\"/g ./env.sh;. ./env.sh
                      export info="DT_API_TOKEN has been set for the manifest.yaml - example : dt.ABCDEFGH.0123456789"
                 ;;
-                "2") read  -p "2) export Robin=" value
-                     sed -i s/Robin=.*$/Robin=\"$value\"/g ./env.sh;. ./env.sh
-                     sed "s/config-id/$Robin/g" project/config.yml.ref > project/config.yml
-                     sed "s/config-id/$Robin/g" delete.yaml.ref > delete.yaml
-                     export info="Robin is used by ManagementZone the file project/config.yml has a unique id: "$Robin
+                "2") read  -p "2) export Client=" value
+                     sed -i s/Client=.*$/Client=\"$value\"/g ./env.sh;. ./env.sh
+                     sed "s/config-id/$Client/g" project/config.yml.ref > project/config.yml
+                     sed "s/config-id/$Client/g" delete.yaml.ref > delete.yaml
+                     export info="Client is used by ManagementZone the file project/config.yml has a unique id: "$Client
                 ;;
                 #############################################################
                 "A") read  -p "A) ./monaco download manifest -e MyEnv  [Y/N]" value
@@ -60,7 +60,7 @@ do
                       echo
                       echo "./monaco deploy manifest.yaml"
                       ./monaco deploy manifest.yaml
-                      export info=$Robin" config has been deployed on your tenant "$DT_TENANT_URL
+                      export info=$Client" config has been deployed on your tenant "$DT_TENANT_URL
                       read  -p "Press any key to continue " pressanycase
                    fi
                 ;;
@@ -69,7 +69,7 @@ do
                       echo
                       echo "./monaco delete"
                       ./monaco delete
-                      export info=$Robin" config has been deleted on your tenant "$DT_TENANT_URL
+                      export info=$Client" config has been deleted on your tenant "$DT_TENANT_URL
                       read  -p "Press any key to continue " pressanycase
                    fi
                 ;;
