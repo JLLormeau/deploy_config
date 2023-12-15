@@ -1,0 +1,12 @@
+configs:
+- id: promocam
+  config:  
+    name: Promocam-Prod
+    parameters:
+      client: promocam
+    template: template_mz.json
+    skip: false
+  type:
+    settings:
+      schema: builtin:management-zones
+      scope: environment
